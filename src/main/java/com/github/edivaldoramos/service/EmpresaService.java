@@ -4,7 +4,9 @@ import com.github.edivaldoramos.exceptions.RecursoNaoEncontradoException;
 import com.github.edivaldoramos.model.Empresa;
 import com.github.edivaldoramos.repository.EmpresaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +17,7 @@ public class EmpresaService implements IEmpresaService {
     private final EmpresaRepository repository;
 
     @Override
+    @Transactional
     public void salvar(Empresa empresa) {
         repository.save(empresa);
     }

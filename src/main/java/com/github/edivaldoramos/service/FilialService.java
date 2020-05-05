@@ -1,11 +1,11 @@
 package com.github.edivaldoramos.service;
 
 import com.github.edivaldoramos.exceptions.RecursoNaoEncontradoException;
-import com.github.edivaldoramos.model.Empresa;
 import com.github.edivaldoramos.model.Filial;
 import com.github.edivaldoramos.repository.FilialRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +16,7 @@ public class FilialService implements IFilialService {
     private final FilialRepository repository;
 
     @Override
+    @Transactional
     public void salvar(Filial filial) {
         repository.save(filial);
     }

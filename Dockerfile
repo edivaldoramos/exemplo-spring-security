@@ -8,4 +8,4 @@ RUN mvn -e -B package
 
 FROM openjdk:8-jre-alpine
 COPY --from=mvnimg /app/target/exemplo-spring-security-1.0.0.jar /app/app.jar
-CMD ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active={docker} /app/app.jar"]

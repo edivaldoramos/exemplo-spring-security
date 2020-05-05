@@ -1,11 +1,24 @@
 server:
   port: 8089
+
 spring:
+  profiles:
+    active: local
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/cadastro
     username: postgres
     password: postgres
+---
+spring:
+  profiles: docker
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/cadastro
+    username: postgres
+    password: postgres
+---
+spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     database: postgresql
